@@ -1,11 +1,3 @@
-# Projetos-Asa-branca
-Repositório destinado para os trabalhos realizados por felipe, membro da equipe de eletrônica e sistemas de telecomunicações no projeto de drones e satélites da UFPE.
-
-
-Aqui está um modelo de **README** para o seu projeto no GitHub, que resume o processo completo de montagem e funcionamento.
-
----
-
 # Controle de Servo Motor com Potenciômetro usando ESP32 e LM2596
 
 Este projeto utiliza uma **ESP32** para controlar um **servo motor** com base na posição de um **potenciômetro**. A alimentação do sistema é feita através de um regulador de tensão **LM2596**, que permite utilizar uma fonte externa (9V ou 12V) para alimentar o servo e a ESP32 de forma estável.
@@ -88,12 +80,3 @@ void loop() {
 - O **LM2596** deve estar ajustado para fornecer **5V** na saída.
 - O **servo motor** e a **ESP32** compartilham o GND do regulador LM2596 para garantir uma referência comum.
 
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
-
----
-
-Esse README cobre o essencial para quem deseja replicar e entender o funcionamento do sistema.
