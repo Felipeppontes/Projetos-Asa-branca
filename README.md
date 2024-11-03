@@ -39,13 +39,3 @@ O objetivo deste projeto é construir um **braço robótico** controlado por **q
 
 - O regulador LM2596 deve ser ajustado para fornecer **5V** para a alimentação dos servos e da ESP32.
 - Verifique se as células de 3,7V têm corrente suficiente para acionar todos os quatro servos simultaneamente.
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
-
----
-
-Esse README proporciona uma visão geral clara do projeto, abrangendo os objetivos, componentes, montagem e código.
