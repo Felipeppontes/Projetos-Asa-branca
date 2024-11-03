@@ -1,82 +1,169 @@
-# Controle de Servo Motor com Potenciômetro usando ESP32 e LM2596
+Aqui está um modelo de README detalhado para o projeto de controle de um braço robótico via Bluetooth com um controle de PS4/PS5 e ESP32. Esse guia inclui todas as etapas para conectar o controle, configurar a eletrônica e controlar os servos:
 
-Este projeto utiliza uma **ESP32** para controlar um **servo motor** com base na posição de um **potenciômetro**. A alimentação do sistema é feita através de um regulador de tensão **LM2596**, que permite utilizar uma fonte externa (9V ou 12V) para alimentar o servo e a ESP32 de forma estável.
+---
 
-## ⚙️ Componentes Utilizados
+# Controle de Braço Robótico com ESP32 e Controle PS4/PS5 via Bluetooth
 
-- 1x ESP32 DevKit
-- 1x Servo motor (como SG90 ou MG995)
-- 1x Potenciômetro
-- 1x Módulo regulador de tensão LM2596
-- 1x Fonte de alimentação (9V ou 12V)
-- Fios de conexão e protoboard
+Este projeto demonstra como conectar um controle de PS4 ou PS5 a um ESP32 via Bluetooth para manipular servos de um braço robótico. Com o uso do joystick do controle, é possível controlar diretamente os ângulos dos servos, permitindo movimentos precisos para o braço robótico. Este projeto é baseado em um tutorial e outros projetos de referência, incluindo [este vídeo tutorial no YouTube](https://www.youtube.com/watch?v=EEViXFoSzww&t=50s) e [esse projeto similar no GitHub](https://github.com/Felipeppontes/Projetos-Asa-branca/blob/main/Controller_esp32_servomotores/README%20(1)%20(1).md).
 
-## 📐 Esquema de Montagem
+---
 
-1. **Conexão do Regulador de Tensão LM2596**:
-   - Conecte a entrada do LM2596 à **fonte externa** (9V ou 12V).
-   - Ajuste a saída do LM2596 para **5V** usando um multímetro.
+## Sumário
+- [Bibliotecas e Ferramentas Necessárias](#bibliotecas-e-ferramentas-necessárias)
+- [Configuração do Hardware](#configuração-do-hardware)
+- [Passo a Passo de Configuração](#passo-a-passo-de-configuração)
+- [Explicação do Código](#explicação-do-código)
+- [Conexões de Eletrônica](#conexões-de-eletrônica)
 
-2. **Conexões com a ESP32 e o Servo Motor**:
-   - **VOUT+ do LM2596** → **pino VIN da ESP32** (opcional) e **pino Vcc do servo**.
-   - **VOUT- do LM2596** → **GND da ESP32**, **GND do servo** e **GND do potenciômetro**.
-   - **Pino de controle do servo** → GPIO **32** da ESP32.
-   - **Pino de sinal do potenciômetro** → GPIO **34** (pino analógico da ESP32).
+---
 
-3. **Conexão do Potenciômetro**:
-   - Terminal esquerdo → **GND da ESP32**.
-   - Terminal direito → **3.3V da ESP32**.
-   - Terminal central → GPIO **34** (pino analógico da ESP32).
+### Bibliotecas e Ferramentas Necessárias
 
-## 💻 Código
+1. **ESP32Servo**  
+   Biblioteca usada para controlar os servos no ESP32. Ela facilita o uso de comandos básicos para controle de ângulo, simplificando a configuração dos pinos para os servos.
 
-O código faz a leitura do valor do potenciômetro e mapeia esse valor para um ângulo entre 0° e 180°, fazendo com que o servo motor acompanhe a rotação do potenciômetro.
+   - **Instalação**: Esta biblioteca pode ser instalada diretamente pela IDE do Arduino em *Sketch > Incluir Biblioteca > Gerenciar Bibliotecas...*.
+   - **Características**: Permite controlar servos com precisão no ESP32, com comandos simples para setar ângulos entre 0 e 180 graus.
+   - **Exemplo de Uso**:
+     ```cpp
+     #include <ESP32Servo.h>
 
-### Código para o projeto
+     Servo servo1;
+     servo1.attach(servoPin);  // Define o pino do servo
+     servo1.write(90);         // Define o ângulo inicial do servo
+     ```
+
+2. **Bluepad32**  
+   A biblioteca `Bluepad32` é responsável pela conexão Bluetooth entre o controle PS4/PS5 e o ESP32, facilitando o acesso aos dados dos eixos e botões do controle.
+
+   - **Instalação**: Acesse o *Gerenciador de Bibliotecas* e pesquise por "Bluepad32" para instalar.
+   - **Características**: Suporte a controles PS4, PS5 e outros, fornecendo acesso a dados dos eixos dos joysticks, botões e até sensores (acelerômetro e giroscópio).
+   - **Exemplo de Conexão**:
+     ```cpp
+     #include <Bluepad32.h>
+
+     void setup() {
+         BP32.setup(&onConnectedController, &onDisconnectedController);
+     }
+
+     void loop() {
+         bool dataUpdated = BP32.update();
+         if (dataUpdated) {
+             processControllers();
+         }
+     }
+     ```
+
+3. **Bluetooth Devices Info (App)**  
+   Para parear com um controle específico, você precisa do endereço MAC do controle. Para obter o endereço MAC, use o aplicativo `Bluetooth Devices Info`, disponível na Play Store ou App Store.
+
+   - **Uso**: Abra o app, conecte o controle ao dispositivo e copie o endereço MAC exibido.
+
+---
+
+### Configuração do Hardware
+
+#### Componentes Necessários:
+- **ESP32**
+- **Servos (4)**: Conectados ao braço robótico
+- **Fonte de alimentação externa** (baterias 3.7V com regulador LM2596)
+- **Controle PS4/PS5**
+
+---
+
+### Passo a Passo de Configuração
+
+1. **Conectar o Controle ao ESP32**  
+   - Ligue o controle de PS4 ou PS5 em modo de emparelhamento, pressionando e segurando os botões `PS` e `Share` ao mesmo tempo até que a luz comece a piscar.
+   - No ESP32, utilize a biblioteca `Bluepad32` para escanear dispositivos e conectar-se ao controle.
+   - Verifique a saída serial para confirmar a conexão e visualizar os dados do controle.
+
+2. **Instalar Bibliotecas no Arduino IDE**
+   - Abra o Arduino IDE, vá em *Sketch > Incluir Biblioteca > Gerenciar Bibliotecas...*
+   - Instale `ESP32Servo` para controle dos servos.
+   - Instale `Bluepad32` para conexão Bluetooth com o controle.
+
+3. **Configuração do Código**  
+   O código se conecta ao controle, lê o estado do joystick e usa esses valores para definir o ângulo dos servos, controlando o movimento do braço.
+
+4. **Identificar Endereço MAC do Controle (Opcional)**  
+   Caso utilize outra biblioteca para o controle, é necessário definir o endereço MAC. Utilize o app `Bluetooth Devices Info` para descobrir o endereço MAC do controle e inserir no código.
+
+---
+
+### Explicação do Código
 
 ```cpp
-#include <ESP32Servo.h>  // Biblioteca compatível com ESP32
+#include <ESP32Servo.h>
+#include <Bluepad32.h>
 
-// Definição dos pinos
-static const int servoPin = 32;  // Pino de controle do servo
-static const int potPin = 34;    // Pino analógico para o potenciômetro
-
-Servo servo1;  // Objeto servo
+Servo servo1, servo2, servo3, servo4;
+ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 
 void setup() {
-  Serial.begin(115200);          // Inicializa a comunicação serial
-  servo1.attach(servoPin);        // Conecta o servo ao pino especificado
+    Serial.begin(115200);
+    BP32.setup(&onConnectedController, &onDisconnectedController);
+
+    servo1.attach(servoPin1);
+    servo2.attach(servoPin2);
+    servo3.attach(servoPin3);
+    servo4.attach(servoPin4);
 }
 
 void loop() {
-  // Lê o valor do potenciômetro (0 a 4095)
-  int potValue = analogRead(potPin);  
+    bool dataUpdated = BP32.update();
+    if (dataUpdated) processControllers();
+}
 
-  // Mapeia o valor do potenciômetro para o ângulo do servo (0 a 180)
-  int angle = map(potValue, 0, 4095, 0, 180);
+void processControllers() {
+    for (auto myController : myControllers) {
+        if (myController && myController->isConnected()) {
+            int angleX = map(myController->axisRX(), -511, 512, 0, 180);
+            servo1.write(angleX);
+        }
+    }
+}
 
-  // Move o servo para o ângulo correspondente
-  servo1.write(angle);
+void onConnectedController(ControllerPtr ctl) {
+    Serial.println("Controle conectado.");
+    myControllers[ctl->index()] = ctl;
+}
 
-  // Exibe o valor no Monitor Serial
-  Serial.print("Potenciômetro: ");
-  Serial.print(potValue);
-  Serial.print(" -> Ângulo: ");
-  Serial.println(angle);
-
-  delay(15);  // Pequeno atraso para suavizar o movimento
+void onDisconnectedController(ControllerPtr ctl) {
+    Serial.println("Controle desconectado.");
+    myControllers[ctl->index()] = nullptr;
 }
 ```
 
-### 📋 Instruções para Uso
+### Explicação:
+- **`BP32.update()`**: Atualiza o status do controle, verificando se há novas entradas.
+- **Mapeamento de Ângulos**: Utiliza `map()` para ajustar o ângulo de controle dos servos com base nos valores do joystick.
+- **Funções de Conexão**: Funções de callback para detectar quando o controle conecta/desconecta.
 
-1. **Carregue o código na ESP32** utilizando a Arduino IDE.
-2. Conecte a ESP32 ao PC para monitorar o sistema.
-3. Abra o **Monitor Serial** para verificar o valor do potenciômetro e o ângulo do servo.
-4. **Gire o potenciômetro** para ver o servo motor acompanhando o movimento.
+---
 
-## ⚠️ Considerações de Alimentação
+### Conexões de Eletrônica
 
-- O **LM2596** deve estar ajustado para fornecer **5V** na saída.
-- O **servo motor** e a **ESP32** compartilham o GND do regulador LM2596 para garantir uma referência comum.
+- **Fonte de Alimentação**: Utilize uma fonte de 3.7V com regulador LM2596 para manter uma tensão estável para os servos.
+- **Conexão dos Servos**:
+   - **GND**: Conecte ao GND do ESP32.
+   - **VCC**: Conecte à saída regulada de 5V do LM2596.
+   - **Sinal**: Conecte o pino de controle ao pino digital do ESP32 configurado no código (`servoPin1`, `servoPin2`, etc.).
 
+---
+
+### Observações
+
+1. **Atenção com a Corrente**: Servos podem exigir mais corrente que o ESP32 fornece. Portanto, o uso de uma fonte regulada é essencial.
+2. **Calibração dos Servos**: Teste os ângulos dos servos e ajuste o mapeamento de acordo com a posição desejada para o braço robótico.
+3. **Teste de Resposta do Controle**: Use a função `dumpGamepad()` para verificar o estado do controle no monitor serial, garantindo que todos os eixos e botões funcionem conforme esperado.
+
+### Links Úteis
+
+- [ESP32Servo Library no GitHub](https://github.com/RoboticsBrno/ESP32-Arduino-Servo-Library)
+- [Bluepad32 Library no GitHub](https://github.com/ricardoquesada/Bluepad32)
+- [Aplicativo Bluetooth Devices Info](https://play.google.com/store/apps/details?id=com.bluetooth.deviceinfo)
+
+---
+
+Esse projeto proporciona controle remoto preciso de um braço robótico, tornando-o adequado para aplicações de manipulação e aprendizado em robótica e automação.
