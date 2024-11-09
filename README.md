@@ -1,5 +1,5 @@
 # Projetos-Asa-branca
-Repositório destinado para os trabalhos realizados por felipe, membro da equipe de eletrônica e sistemas de telecomunicações no projeto de drones e satélites da UFPE.
+Repositório destinado para os trabalhos realizados por pela equipe e por mim, membro da equipe de eletrônica e sistemas de telecomunicações no projeto de drones e satélites da UFPE.
 
 Aqui está um modelo de **README** para resumir o objetivo geral do projeto de construção de um **braço robótico** com **quatro servos** utilizando **ESP32**, alimentação externa e um regulador **LM2596**.
 
