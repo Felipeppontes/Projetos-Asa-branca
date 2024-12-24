@@ -1,0 +1,6 @@
+Esse código é referente ao projeto do asa Branca, usado na confraternização dia 14/12 para controlar o carrinho com 2 motores DC responsáveis pelo movimento do robô, com um controle de PS5/PS4 conectado ao bluetooth da esp32. O código está todo comentado e reduzido ao máximo para melhor compreensão. 
+
+A ideia é implementar mais recursos a ideia, com:
+- FreeRTOS --> para realizar controle de atitudes de forma paralela;
+- Construir uma placa de circuito impresso para toda parte elétrica e eletrônica do robô;
+- Controle de potencia dos movimentos --> PWM;
