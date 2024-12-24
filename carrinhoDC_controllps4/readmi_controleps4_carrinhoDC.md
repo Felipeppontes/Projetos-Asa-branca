@@ -12,7 +12,7 @@ O objetivo deste projeto é construir um **robô** controlado por **2 motores DC
 
 - 1x ESP32
 - 2x motores DC
-- 1x Regulador de tensão LM2596
+- 1x Regulador de tensão LM2596 (É possivel o uso do regulador LM7805)
 - 2x Células de 3,7V (Li-ion ou LiPo)
 - Fios de conexão e protoboard
 - Módulo driver de motor (ex.: L298N ou outro com suporte a PWM)  
