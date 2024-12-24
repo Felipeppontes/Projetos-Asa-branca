@@ -2,20 +2,58 @@ Aqui está uma versão revisada e aprimorada da sua documentação e plano de de
 
 ---
 
-# **Controle de Carrinho DC com ESP32 e Controle PS4/PS5**
+# Carrinho controlado por controle PS5/PS4 e ESP32
+
+## 🎯 Objetivo Geral do Projeto
+
+O objetivo deste projeto é construir um **robô** controlado por **2 motores DC**, utilizando uma **ESP32** como unidade de controle. O sistema será alimentado por 2 células de **3,7V** conectadas a um regulador de tensão ajustável **LM2596**, que garantirá uma tensão estável para os servos e para a ESP32.
+
+## 📐 Componentes Utilizados
+
+- 1x ESP32
+- 2x motores DC
+- 1x Regulador de tensão LM2596
+- 2x Células de 3,7V (Li-ion ou LiPo)
+- Fios de conexão e protoboard
+- Módulo driver de motor (ex.: L298N ou outro com suporte a PWM)  
+- Controle PS4 ou PS5
+- Fonte de alimentação adequada  
+- Jumpers e protoboard (ou PCB para futura integração) 
+
+
+## ⚙️ Montagem do Braço Robótico
+
+A parte mecânica do projeto é inspirado no projeto open-source [Buzz Line](https://www.instructables.com/Buzz-Line/), um carrinho robótico controlado remotamente e altamente customizável. Este projeto busca criar uma solução prática e acessível para entusiastas de robótica e sistemas embarcados, utilizando componentes simples e eficientes.
+****
+## Estrutura do Carrinho
+
+1. **Alimentação**:
+   O carrinho é alimentado por **duas células de lítio recarregáveis de 3,7 V**, conhecidas por sua alta densidade de energia e capacidade de recarga. Essas baterias fornecem energia suficiente para o funcionamento de todos os componentes do sistema.
+
+
+2. **Ponte H L298N**:
+   A **ponte H L298N** é um controlador de motores DC amplamente utilizado em projetos de robótica. Ele permite controlar a direção e a velocidade de até dois motores simultaneamente. Este módulo é ideal para projetos como este, pois suporta correntes de até 2A por canal e opera com tensões de até 46V. Sua robustez e facilidade de uso o tornam uma escolha popular entre makers e estudantes.
+
+3. **Motores DC**:
+   O carrinho utiliza **motores DC com caixa de redução e eixo duplo**. Esses motores, disponíveis na [RoboCore](https://www.robocore.net/motor-motoredutor/motor-dc-3-6v-com-caixa-de-reducao-e-eixo-duplo?gad_source=1&gclid=Cj0KCQiA1Km7BhC9ARIsAFZfEIvH_HWOC8NjmbgaPcVXBVp2EDmE5qzcz29Rg7HFtozEn8zLGoV0QNIaAgJNEALw_wcB), oferecem torque elevado e maior controle de tração, sendo ideais para aplicações em veículos robóticos.
+
+4. **Controlador ESP32**:
+   O **ESP32**, disponível na [RoboCore](https://www.robocore.net/wifi/esp32-wifi-bluetooth?gad_source=1&gclid=Cj0KCQiA1Km7BhC9ARIsAFZfEItKIvW5x2VWmoa3_Ukk3fiGiO0IsD2RH8ewUkYliFsU9Pffk5pXdZQaAj9TEALw_wcB), é o cérebro do projeto. Este microcontrolador é conhecido por sua versatilidade, oferecendo conectividade Wi-Fi e Bluetooth, além de uma excelente capacidade de processamento. No projeto, ele gerencia os comandos enviados pelo controle Bluetooth e controla os motores e demais componentes do carrinho.
+
+6. **Controle Bluetooth PS4**:
+   O carrinho é controlado por um **controle Bluetooth compatível com PS4**, disponível no [Mercado Livre](https://www.mercadolivre.com.br/controle-compativel-ps4-bluetooth-pc-gamer-tv-smart-preto-dualshock-4/p/MLB36590147#polycard_client=search_best-seller&wid=MLB3936509319&sid=search). Este controle permite que o usuário envie comandos para o ESP32 de forma prática e intuitiva. Modelos compatíveis com PS5 ou outros controles Bluetooth também podem ser utilizados.
+
+8. **Regulador de Tensão LM2596**:
+   O **LM2596** é um regulador de tensão do tipo step-down, ajustável, que converte a tensão das baterias para os níveis necessários para os componentes do sistema. Ele é eficiente e fácil de configurar, garantindo uma alimentação estável para o circuito.
+   
+
+## ⚠️ Considerações de Alimentação
+
+- O regulador LM2596 deve ser ajustado para fornecer de **4.5V** a **9V** para a alimentação da ESP32.
+- O regulador da Ponte H irá receber a limentação das pilhas de aproximadamente **7.2V** e abaixar para **5V** para alimentar os motores.
+
 
 Este projeto utiliza um ESP32 conectado via Bluetooth a um controle de PS4 ou PS5 para controlar o movimento de um carrinho com dois motores DC. A estrutura foi planejada para ser simples, modular e extensível.
-
----
-
-## **Materiais Necessários**
-
-- **ESP32**  
-- **Dois motores DC**  
-- **Módulo driver de motor** (ex.: L298N ou outro com suporte a PWM)  
-- **Controle PS4 ou PS5**  
-- **Fonte de alimentação adequada**  
-- **Jumpers e protoboard (ou PCB para futura integração)**  
 
 ---
 
