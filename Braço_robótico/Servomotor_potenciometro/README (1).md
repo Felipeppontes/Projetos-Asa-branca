@@ -1,5 +1,7 @@
 # Controle de Servo Motor com Potenciômetro usando ESP32 e LM2596
 
+ESSA É UMA VERSÃO SIMPLIFICADA DO PROJETO COMPLETO DO BRAÇO ROBÓTICO, SÓ PARA A MELHOR COMPREENSÃO DO FUNCIONAMENTO DO SERVOMOTOR COM A ESP32 E O LM2596.
+
 Este projeto utiliza uma **ESP32** para controlar um **servo motor** com base na posição de um **potenciômetro**. A alimentação do sistema é feita através de um regulador de tensão **LM2596**, que permite utilizar uma fonte externa (9V ou 12V) para alimentar o servo e a ESP32 de forma estável.
 
 ## ⚙️ Componentes Utilizados

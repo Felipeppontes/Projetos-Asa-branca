@@ -1,5 +1,5 @@
 # Projetos-Asa-branca
-Repositório destinado para os trabalhos realizados por pela equipe e por mim, membro da equipe de eletrônica e sistemas de telecomunicações no projeto de drones e satélites da UFPE.
+Repositório destinado para os trabalhos realizados por mim como membro da equipe de eletrônica e sistemas de telecomunicações no projeto de drones e satélites da UFPE.
 
 ---
 
@@ -85,5 +85,80 @@ A parte mecânica do projeto é inspirado no projeto open-source [Buzz Line](htt
 - O regulador LM2596 deve ser ajustado para fornecer de **4.5V** a **9V** para a alimentação da ESP32.
 - O regulador da Ponte H irá receber a limentação das pilhas de aproximadamente **7.2V** e abaixar para **5V** para alimentar os motores.
 
-# PRÓXIMO PROJETO...
+# Telemetria com LoRa
+
+🎯 Objetivo Geral do Projeto
+
+Este projeto tem como objetivo realizar telemetria entre a estação base e o foguete utilizado na missão Humaitá, permitindo o recebimento de dados em tempo real do foguete e o envio de comandos da estação base para o foguete a uma distância de até 3 km.
+
+📡 Componentes Utilizados
+
+2x Módulos LoRa da EBYTE modelo E220-900T30
+
+ESP32 para processamento dos dados no foguete
+
+Raspberry Pi na estação base para recepção e processamento dos dados
+
+Antena SMA Male LoRa 5dBi (para o foguete)
+
+Antena Yagi-Uda (projetada para a frequência utilizada na estação base)
+
+🔧 Configuração do Módulo E220-900T30
+
+A configuração do módulo LoRa E220-900T30 será realizada no modo transmissão fixa. Para entender melhor como configurar e programar o módulo, consulte os seguintes materiais:
+
+Configuração e Programação - Vídeo 1
+
+Configuração e Programação - Vídeo 2
+
+Guia MicroPeta
+
+📜 Biblioteca Utilizada
+
+A principal biblioteca utilizada no projeto é a EByte LoRa E220 Series Library, disponível no GitHub:
+https://github.com/xreef/EByte_LoRa_E220_Series_Library
+
+Essa biblioteca fornece uma interface simplificada para comunicação com os módulos EBYTE LoRa, permitindo fácil configuração e transmissão de dados.
+
+📡 Projeto de Antenas
+
+Para garantir uma comunicação eficiente entre a estação base e o foguete, utilizaremos:
+
+Antena para o foguete: SMA Male LoRa Antena 5dBi
+
+Antena para a estação base: Yagi-Uda projetada para a frequência utilizada
+
+Materiais para o projeto das antenas:
+
+Projeto Antena Yagi-Uda - Vídeo 1
+
+Projeto Antena Yagi-Uda - Vídeo 2
+
+Simulador de Antenas
+
+📡 Estrutura do Sistema
+
+Foguete:
+
+ESP32 coleta e transmite os dados via LoRa.
+
+Alimentação independente.
+
+Comunicação contínua com a estação base.
+
+Estação Base:
+
+Raspberry Pi recebe os dados e processa.
+
+Conexão via LoRa com o foguete.
+
+Interface gráfica para exibição dos dados.
+
+🚀 Conclusão
+
+Este projeto busca fornecer uma solução robusta para telemetria de foguetes, garantindo uma comunicação eficiente e confiável entre o foguete e a estação base. A utilização do LoRa permite longas distâncias de comunicação com baixo consumo de energia, essencial para aplicações aeroespaciais.
+
+
+
+
 
