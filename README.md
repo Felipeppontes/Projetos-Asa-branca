@@ -102,14 +102,11 @@ Este projeto tem como objetivo realizar telemetria entre a estação base e o fo
 ## 🔧 Configuração do Módulo E220-900T30
 A configuração do módulo LoRa E220-900T30 será realizada no modo transmissão fixa. Para entender melhor como configurar e programar o módulo, consulte os seguintes materiais:
 
-- Configuração e Programação - Vídeo 1
+- Configuração e Programação - Vídeo 1 (https://www.youtube.com/watch?v=h6PLXrxV66Q)
+- Configuração e Programação - Vídeo 2 (https://www.youtube.com/watch?v=Pu0-391iKC8)
+- Guia MicroPeta (https://www.micropeta.com/video1)
 
-- Configuração e Programação - Vídeo 2
-
-Guia MicroPeta
-
-📜 Biblioteca Utilizada
-
+## 📜 Biblioteca Utilizada
 A principal biblioteca utilizada no projeto é a EByte LoRa E220 Series Library, disponível no GitHub:
 https://github.com/xreef/EByte_LoRa_E220_Series_Library
 
@@ -121,25 +118,22 @@ Para garantir uma comunicação eficiente entre a estação base e o foguete, ut
 - Antena para o foguete: SMA Male LoRa Antena 5dBi
 - Antena para a estação base: Yagi-Uda projetada para a frequência utilizada
 - Materiais para o projeto das antenas:
-- Projeto Antena Yagi-Uda - Vídeo 1
-- Projeto Antena Yagi-Uda - Vídeo 2
-- Simulador de Antenas
+- Projeto Antena Yagi-Uda - Vídeo 1 (https://youtu.be/444sTTpWWzw?si=g0ieaR5HW8kkrCAz)
+- Projeto Antena Yagi-Uda - Vídeo 2 (https://youtu.be/R1HdDT5lDlM?si=piKj0uEXso6Vrnh_)
+- Simulador de Antenas (https://youtu.be/d5oTMlDGldU?si=2umriPPiTrR88a_e)
 
 ## 📡 Estrutura do Sistema
 
 ### Foguete:
 
--ESP32 coleta e transmite os dados via LoRa.
-
--Alimentação independente.
+- ESP32 coleta e transmite os dados via LoRa.
+- Alimentação independente.
 - Comunicação contínua com a estação base.
 
 ### Estação Base:
 
 - Raspberry Pi recebe os dados e processa.
-
 - Conexão via LoRa com o foguete.
-
 - Interface gráfica para exibição dos dados.
 
 ## 🚀 Conclusão
