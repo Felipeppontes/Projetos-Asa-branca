@@ -1,0 +1,1 @@
+### Verificamos a dificuldade de realizar os testes de comunicação com a ESP32, devido a alimentação dela só fornecer 3.3V. Logo, testamos com o Arduino Uno que pode fornecer 5V para alimentar o módulo E220 900T30D, e 3.v para a comunicação (Rx, Tx e Aux).
