@@ -38,7 +38,7 @@ Com essa biblioteca, é possível configurar e enviar dados via LoRa de forma ef
 | M0                 | D5                   | Controle de Modo |
 | M1                 | D4                   | Controle de Modo |
 | AUX                | D2                   | Indicação de Estado |
-| VCC (3.3V)         | 3.3V                 | Alimentação |
+| VCC (5V)           | 5 V(Arduino/Externo) | Alimentação |
 | GND                | GND                  | Terra |
 
 > ⚠ **Importante:** O módulo E220-900T30D opera em **3.3V**. Se estiver usando um Arduino de 5V, utilize um **conversor de nível lógico** nos pinos TX e RX.
