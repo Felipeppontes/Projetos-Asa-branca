@@ -121,7 +121,7 @@ e220.printParameters(); // Exibe os parâmetros atuais no Serial Monitor
 - [Repositório no GitHub](https://github.com/xreef/EByte_LoRa_E220_Series_Library)
 - [Manual do Módulo E220-900T30D](https://manuals.plus/pt/ebyte/e220-900t30d-lora-wireless-module-manual)
 - [Datasheet do Módulo](https://manuals.plus/m/12f09f3a998def18a583f07ae19dc04635512c1a83f96d39c0d124afbfc82ca1_optim.pdf)
-
+- [Guia do fabricante, para uso da bibliotaca](https://www.ebyte.com/Uploadfiles/Files/2023-9-14/20239141428266564.pdf)
 ---
 
 ## 🤝 Contribuições
