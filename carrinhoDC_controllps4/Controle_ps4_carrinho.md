@@ -21,7 +21,7 @@ O objetivo deste projeto é construir um **robô** controlado por **2 motores DC
 - Jumpers e protoboard (ou PCB para futura integração) 
 
 
-## ⚙️ Montagem do Braço Robótico
+## ⚙️ Montagem do  Robô
 
 A parte mecânica do projeto é inspirado no projeto open-source [Buzz Line](https://www.instructables.com/Buzz-Line/), um carrinho robótico controlado remotamente e altamente customizável. Este projeto busca criar uma solução prática e acessível para entusiastas de robótica e sistemas embarcados, utilizando componentes simples e eficientes.
 ****
@@ -154,3 +154,4 @@ Este projeto utiliza um ESP32 conectado via Bluetooth a um controle de PS4 ou PS
 4. Expandir o projeto com sensores e modos automáticos.  
 
 Se precisar de suporte em qualquer etapa ou mais detalhes, é só avisar!
+
