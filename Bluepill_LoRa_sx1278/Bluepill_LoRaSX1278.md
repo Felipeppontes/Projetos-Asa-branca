@@ -4,9 +4,9 @@ Projeto de acionamento da caixa de ignição do foguete à distância via comuni
 
 
 
-### Bibliotecas e Ferramentas Necessárias
+### Pesquisa de 4Bibliotecas e Ferramentas Necessárias
 
-1. **xxx**:
+1. - [Biblioteca 01](https://github.com/SMotlaq/LoRa)
 ---
 
 ### Configuração do Hardware
@@ -31,9 +31,11 @@ Projeto de acionamento da caixa de ignição do foguete à distância via comuni
 
 ### Links Úteis
 
-- [Módulo LoRa usado](https://www.fermarc.com/modulo-lora-ra-01-sx1278-410mhz-a-525mhz-com-antena)
+- [Módulo LoRa Ra-01 usado](https://www.fermarc.com/modulo-lora-ra-01-sx1278-410mhz-a-525mhz-com-antena)
+- [Módulo LoRa Ra-02 usado](https://www.mercadolivre.com.br/modulo-lora-sx1278-433mhz-ra-02-antena-10km-cabecalho/p/MLB2034202223?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic&pdp_filters=item_id%3AMLB5413671944&from=gshop)
 - [Bluepill](https://embarcados.com.br/blue-pill-stm32f103c8t6/)
 - [Datasheet LoRa Sx1278](https://cdn.awsli.com.br/945/945993/arquivos/LORA%20RA-01.pdf)
+
 
 ---
 
